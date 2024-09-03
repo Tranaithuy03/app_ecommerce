@@ -1,4 +1,4 @@
-import 'package:app_my_pham/feature/authentication/screens/onboarding.dart';
+import 'package:app_my_pham/feature/authentication/screens/onboarding/onboarding.dart';
 import 'package:app_my_pham/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
