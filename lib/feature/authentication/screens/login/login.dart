@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:app_my_pham/feature/authentication/screens/login/widgets/login_footer.dart';
+import 'package:app_my_pham/feature/authentication/screens/login/widgets/login_form.dart';
+import 'package:app_my_pham/feature/authentication/screens/login/widgets/login_header.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -15,87 +17,9 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               //header
-              Column(
-                children: [
-                  const Image(
-                      height: 150, image: AssetImage('assets/logos/logo.png')),
-                  Text(
-                    'Welcome',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Text('Khám phá vũ trụ tỏa hương bằng cách tạo tài khoản!',
-                      style: Theme.of(context).textTheme.bodyMedium)
-                ],
-              ),
+              const LoginHeader(title: 'Khám phá vũ trụ tỏa hương bằng cách tạo tài khoản!',),
               //form
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Form(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            prefixIcon: Icon(Iconsax.direct_right_copy),
-                            labelText: 'Email',
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12.0,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              suffixIcon: Icon(Iconsax.eye_slash_copy),
-                              labelText: 'Password',
-                              prefixIcon: Icon(Iconsax.password_check_copy)),
-                        ),
-                        const SizedBox(
-                          height: 12.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Checkbox(
-                                  value: true,
-                                  activeColor: Colors.blue,
-                                  onChanged: (value) {},
-                                ),
-                                const Text('Remember Me')
-                              ],
-                            ),
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text('Forget Password?'))
-                          ],
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Sign In',
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 18.0,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Create Account',
-                              )),
-                        ),
-                      ],
-                    )
-                ),
-              ),
+              const LoginForm(),
               //divide
               const SizedBox(height: 20.0,),
               Row(
@@ -108,32 +32,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0,),
               //footer
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black26),
-                    ),
-                    child: IconButton(
-                      onPressed: (){},
-                      icon: Image.asset('assets/logos/logo_google.jpg', width: 14.0,height: 14.0,),
-                    ),
-                  ),
-                  const SizedBox(width: 15.0,),
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black26),
-                    ),
-                    child: IconButton(
-                      onPressed: (){},
-                      icon: Image.asset('assets/logos/logo_facebook.jpg', width: 14.0,height: 14.0,),
-                    ),
-                  )
-                ],
-              )
+              const LoginFooter()
             ],
           ),
         ),
@@ -141,3 +40,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+
+
