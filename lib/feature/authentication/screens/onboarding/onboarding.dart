@@ -1,8 +1,8 @@
 import 'package:app_my_pham/feature/authentication/controller.onboarding/onboarding_controller.dart';
-import 'package:app_my_pham/feature/authentication/screens/widgets/onboarding_dot.dart';
-import 'package:app_my_pham/feature/authentication/screens/widgets/onboarding_next.dart';
-import 'package:app_my_pham/feature/authentication/screens/widgets/onboarding_page.dart';
-import 'package:app_my_pham/feature/authentication/screens/widgets/onboarding_skip.dart';
+import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_dot.dart';
+import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_next.dart';
+import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_skip.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

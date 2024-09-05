@@ -1,3 +1,4 @@
+import 'package:app_my_pham/feature/authentication/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class OnboardingController extends GetxController{
   void next(){
     if(currentPageIndex.value==2)
       {
+        Get.offAll(const LoginScreen());
       }
     else{
       int pageIndex = currentPageIndex.value +1;
