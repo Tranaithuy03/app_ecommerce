@@ -1,4 +1,7 @@
+import 'package:app_my_pham/feature/authentication/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -63,7 +66,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(()=> const SignupScreen()),
                     child: const Text(
                       'Create Account',
                     )),
