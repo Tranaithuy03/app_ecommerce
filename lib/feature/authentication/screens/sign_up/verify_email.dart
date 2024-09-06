@@ -3,7 +3,6 @@ import 'package:app_my_pham/feature/authentication/screens/sign_up/verify_done.d
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
 
