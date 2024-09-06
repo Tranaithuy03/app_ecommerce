@@ -1,7 +1,6 @@
 import 'package:app_my_pham/feature/authentication/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -44,7 +43,7 @@ class LoginForm extends StatelessWidget {
                         activeColor: Colors.blue,
                         onChanged: (value) {},
                       ),
-                      const Text('Remember Me')
+                      Text('Remember Me', style: Theme.of(context).textTheme.bodySmall,)
                     ],
                   ),
                   TextButton(

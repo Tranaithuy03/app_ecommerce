@@ -27,7 +27,7 @@ class MPAppTheme {
       brightness: Brightness.dark,
       primaryColor: Colors.lightBlue,
       scaffoldBackgroundColor: Colors.black,
-      textTheme: MPTextTheme.lightTextTheme,
+      textTheme: MPTextTheme.darkTextTheme,
       elevatedButtonTheme: MPElevatedButtonTheme.darkElevatedButtonTheme,
       appBarTheme: MPAppBarTheme.darkAppBarTheme,
       bottomSheetTheme: MPBottomSheetTheme.darkBottomSheetTheme,

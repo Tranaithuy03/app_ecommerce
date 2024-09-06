@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../controller.onboarding/onboarding_controller.dart';
-
+import '../../../controller/onboarding/onboarding_controller.dart';
 class OnboardingNextButton extends StatelessWidget {
   const OnboardingNextButton({
     super.key,

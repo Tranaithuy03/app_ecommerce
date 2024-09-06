@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../controller.onboarding/onboarding_controller.dart';
+import '../../../controller/onboarding/onboarding_controller.dart';
 class OnboardingSkip extends StatelessWidget {
   const OnboardingSkip({
     super.key,
