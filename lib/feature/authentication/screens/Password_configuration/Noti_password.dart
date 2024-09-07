@@ -1,16 +1,14 @@
 import 'package:app_my_pham/feature/authentication/screens/login/login.dart';
-import 'package:app_my_pham/feature/authentication/screens/sign_up/verify_done.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+class NotiPasswordScreen extends StatelessWidget {
+  const NotiPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         actions: [
           IconButton(onPressed: () => Get.to(()=> const LoginScreen()),
               icon: const Icon(CupertinoIcons.clear))
@@ -27,7 +25,7 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32.0,),
               Text(
-                'Verify your email address',
+                'Password Reset Link Has been sent',
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -39,7 +37,7 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12.0,),
               Text(
-                'Congratulations! Wait to verify your email address to start shopping.',
+                'Your account security is our priority! We\'ve sent you a password reset link to safety change your password and keep your account protected',
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -47,16 +45,16 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(()=> const VerifyDoneScreen()),
+                    onPressed: () => Get.to(()=> const LoginScreen()),
                     child: const Text(
-                      'Continue',
+                      'Done',
                     )),
               ),
               const SizedBox(height: 12.0,),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: ()=> Get.back(),
                     child: const Text(
                       'Resend email',
                     )),

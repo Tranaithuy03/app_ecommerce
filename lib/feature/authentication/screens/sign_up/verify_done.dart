@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../login/login.dart';
 class VerifyDoneScreen extends StatelessWidget {
   const VerifyDoneScreen({super.key});
 
@@ -32,7 +35,7 @@ class VerifyDoneScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(()=> const LoginScreen()),
                   child: const Text(
                     'Continue',
                   )),
