@@ -1,7 +1,8 @@
+import 'package:app_my_pham/feature/authentication/screens/Password_configuration/forgot_password.dart';
 import 'package:app_my_pham/feature/authentication/screens/sign_up/signup.dart';
+import 'package:app_my_pham/navigation_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -44,18 +45,18 @@ class LoginForm extends StatelessWidget {
                         activeColor: Colors.blue,
                         onChanged: (value) {},
                       ),
-                      const Text('Remember Me')
+                      Text('Remember Me', style: Theme.of(context).textTheme.bodySmall,)
                     ],
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () => Get.to(()=> const ForgotPasswordScreen()),
                       child: const Text('Forget Password?'))
                 ],
               ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(()=> const NavigationContainer()),
                     child: const Text(
                       'Sign In',
                     )),

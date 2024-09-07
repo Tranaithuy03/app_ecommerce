@@ -1,5 +1,7 @@
 import 'package:app_my_pham/feature/authentication/screens/login/widgets/login_footer.dart';
+import 'package:app_my_pham/feature/authentication/screens/sign_up/verify_email.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -109,7 +111,7 @@ class SignupScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(()=> const VerifyEmailScreen()),
                             child: const Text(
                               'Create Account',
                             )),

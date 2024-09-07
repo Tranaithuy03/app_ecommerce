@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../controller.onboarding/onboarding_controller.dart';
+import '../../../controller/onboarding/onboarding_controller.dart';
 
 
 class OnboardingDot extends StatelessWidget {
