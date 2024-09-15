@@ -1,9 +1,10 @@
+import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
-import 'package:app_my_pham/feature/shop/screen/home/widgets/curved_edges.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/category_container.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/header_container.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -38,102 +39,67 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     actions: [
-                      MPCartCounterIcon(number: '10',onPressed: () {},colorIcon: Colors.white,)
+                      MPCartCounterIcon(
+                        number: '10',
+                        onPressed: () {},
+                        colorIcon: Colors.white,
+                      )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  const MPSearchContainer(text: 'Search in store'),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const MPSectionHeading(
+                          title: 'Popular Categories',
+                          textColor: Colors.white,
+                          showActionButton: false,
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        //categories
+                        SizedBox(
+                          height: 80,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: 10,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (_, index) {
+                                return const MPVerticalImageText(
+                                  title: 'Body mist',
+                                  image:
+                                      'assets/icons/categories/body_mist.png',
+                                );
+                              }),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
-            )
+            ),
+            Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(16.0)),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: const Image(
+                      image: AssetImage('assets/images/banners/banner_1.png'),
+                      fit: BoxFit.contain,
+                    )))
           ],
         ),
       ),
-    );
-  }
-}
-
-class MPCartCounterIcon extends StatelessWidget {
-  const MPCartCounterIcon({
-    super.key, required this.number, required this.onPressed, required this.colorIcon,
-  });
-  final String number;
-  final VoidCallback onPressed;
-  final Color colorIcon;
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: [
-      IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            Iconsax.shopping_bag_copy,
-            color: colorIcon,
-          )),
-      Positioned(
-        right: 0,
-        child: Container(
-          height: 20,
-          width: 20,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(100)
-          ),
-          child: Center(child: Text(number, style: Theme.of(context).textTheme.labelLarge!.apply(color: Colors.white, fontSizeFactor: 1),)),
-        ),
-      )
-    ]);
-  }
-}
-
-class MPPrimaryHeaderContainer extends StatelessWidget {
-  const MPPrimaryHeaderContainer({
-    super.key,
-    required this.child,
-  });
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: MPCustomCurvedEdges(),
-      child: Container(
-        color: Colors.blueAccent,
-        padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
-          child: Stack(
-            children: [
-              const Positioned(
-                top: -150,
-                right: -250,
-                child: CircularContainer(),
-              ),
-              const Positioned(
-                top: 100,
-                right: -300,
-                child: CircularContainer(),
-              ),
-              child
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CircularContainer extends StatelessWidget {
-  const CircularContainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      height: 400,
-      padding: const EdgeInsets.all(0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(400), color: Colors.white12),
     );
   }
 }
