@@ -39,7 +39,7 @@ class OnboardingScreen extends StatelessWidget {
             ],
           ),
           const OnboardingSkip(),
-          const OnboardingDot(),
+          OnboardingDot(controller: controller,),
           const OnboardingNextButton()
         ],
       ),

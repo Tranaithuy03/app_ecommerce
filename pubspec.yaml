@@ -31,6 +31,7 @@ flutter:
     - assets/images/banners/
     - assets/images/onboarding/
     - assets/images/verify/
+    - assets/images/products/
   fonts:
     - family: Poppins
       fonts:
