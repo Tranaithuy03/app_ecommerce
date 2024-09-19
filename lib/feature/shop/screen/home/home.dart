@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-                  const MPSearchContainer(text: 'Search in store'),
+                  const MPSearchContainer(),
                   const SizedBox(
                     height: 32,
                   ),
@@ -128,18 +128,26 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 32.0,
                   ),
+                   MPSectionHeading(
+                    title: 'Popular Categories',
+                    textColor: Colors.black,
+                    onPressed: (){},
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
-                    itemCount: 12,
+                    itemCount: 8,
                     gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 12.0,
                         mainAxisSpacing: 12.0,
                       mainAxisExtent: 300
                     ),
-                    itemBuilder: (context, index) => MPProductCart(),
+                    itemBuilder: (context, index) => const MPProductCart(),
                   )
                 ],
               ),

@@ -1,8 +1,10 @@
+import 'package:app_my_pham/common/enum.dart';
 import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+import 'brand_title_verify.dart';
 import 'icon_container.dart';
 
 class MPProductCart extends StatelessWidget {
@@ -82,48 +84,39 @@ class MPProductCart extends StatelessWidget {
                   const SizedBox(
                     height: 4.0,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Macaland',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: 8.0),
-                      const Icon(
-                        Iconsax.verify,
-                        color: Colors.blue,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '100.000đ',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: const BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomRight: Radius.circular(10))),
-                        child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Iconsax.add_copy,
-                              color: Colors.white,
-                              size: 20,
-                            )))
-                    ],
-                  )
+                  const MPBrandTitleVerify(title: 'Macaland',),
+
                 ],
               ),
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    '100.000đ',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ),
+                Container(
+                    width: 30,
+                    height: 30,
+                    decoration: const BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10))),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Iconsax.add_copy,
+                          color: Colors.white,
+                          size: 20,
+                        )))
+              ],
             )
           ],
         ),
@@ -131,3 +124,5 @@ class MPProductCart extends StatelessWidget {
     );
   }
 }
+
+

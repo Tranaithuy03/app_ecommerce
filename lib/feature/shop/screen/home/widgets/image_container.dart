@@ -12,7 +12,7 @@ class MPRoundImage extends StatelessWidget {
     this.width,
     this.height,
     this.onPressed,
-    this.radius=16.0,
+    this.radius=100,
   });
 
   final bool isNetworkImage;

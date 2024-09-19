@@ -1,4 +1,5 @@
 import 'package:app_my_pham/feature/shop/screen/home/home.dart';
+import 'package:app_my_pham/feature/shop/screen/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -34,9 +35,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final pages = [
     const HomeScreen(),
-    Container(
-      color: Colors.pinkAccent,
-    ),
+    const StoreScreen(),
     Container(
       color: Colors.orange,
     ),

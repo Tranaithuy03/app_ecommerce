@@ -3,18 +3,19 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 class MPCartCounterIcon extends StatelessWidget {
   const MPCartCounterIcon({
     super.key,
-    required this.number,
-    required this.onPressed,
-    required this.colorIcon,
+    this.number='0',
+    this.onPressed,
+    this.colorIcon,
   });
 
   final String number;
-  final VoidCallback onPressed;
-  final Color colorIcon;
+  final VoidCallback? onPressed;
+  final Color? colorIcon;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Stack(
+        children: [
       IconButton(
           onPressed: onPressed,
           icon: Icon(
