@@ -104,14 +104,17 @@ class HomeScreen extends StatelessWidget {
                       MPRoundImage(
                         image: 'assets/images/banners/banner_1.png',
                         padding: EdgeInsets.all(24.0),
+                        radius: 16.0,
                       ),
                       MPRoundImage(
                         image: 'assets/images/banners/banner_2.png',
                         padding: EdgeInsets.all(24.0),
+                        radius: 16.0,
                       ),
                       MPRoundImage(
                         image: 'assets/images/banners/banner_3.png',
                         padding: EdgeInsets.all(24.0),
+                        radius: 16.0,
                       ),
                     ],
                     options: CarouselOptions(
