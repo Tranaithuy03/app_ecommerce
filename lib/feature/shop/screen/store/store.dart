@@ -1,13 +1,16 @@
-import 'package:app_my_pham/common/enum.dart';
-import 'package:app_my_pham/common/widgets/brand_title_verify.dart';
+import 'package:app_my_pham/common/widgets/grid_layout.dart';
 import 'package:app_my_pham/common/widgets/product_cart.dart';
 import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/common/widgets/tabbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
-import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import '../../../../common/widgets/brand_card.dart';
+import '../../../../common/widgets/brand_show.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -15,7 +18,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -61,65 +64,14 @@ class StoreScreen extends StatelessWidget {
                               showActionButton: true,
                             ),
                           ),
-                          GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
+                          MPGridLayout(
                             itemCount: 4,
-                            padding: EdgeInsets.zero,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    mainAxisSpacing: 14.0,
-                                    crossAxisSpacing: 14.0,
-                                    mainAxisExtent: 80),
+                            mainAxisExtent: 80,
                             itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {},
-                                child: MPRoundedContainer(
-                                  //radius: 16.0,
-                                  backgroundColor: Colors.transparent,
-                                  showBorder: true,
-                                  padding: const EdgeInsets.all(8.0),
-                                  borderColor: Colors.grey,
-                                  child: Row(
-                                    children: [
-                                      const Flexible(
-                                        //chỉ chiếm không gian vừa đủ
-                                        child: MPRoundImage(
-                                          image:
-                                              'assets/images/products/perfume.png',
-                                          height: 56,
-                                          width: 56,
-                                          padding: EdgeInsets.all(8.0),
-                                          backgroundColor: Colors.transparent,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 6.0,
-                                      ),
-                                      Expanded(
-                                        //chiếm hết phần còn lại của row
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const MPBrandTitleVerify(
-                                              title: 'Macaland',
-                                              size: textSize.medium,
-                                            ),
-                                            Text(
-                                              '250 products with ahhh',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .labelMedium,
-                                              overflow: TextOverflow.ellipsis,
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                              return const MPBrandCard(
+                                image: 'assets/images/products/perfume.png',
+                                title: 'Maccaland',
+                                subtitle: '250 products',
                               );
                             },
                           )
@@ -131,22 +83,72 @@ class StoreScreen extends StatelessWidget {
                         child: Text('Perfume'),
                       ),
                       Tab(
-                        child: Text('shorts'),
+                        child: Text('Fragrance sachet'),
                       ),
                       Tab(
-                        child: Text('clothes'),
+                        child: Text('Body mist'),
                       ),
                       Tab(
-                        child: Text('skirt'),
-                      ),
-                      Tab(
-                        child: Text('hat'),
+                        child: Text('Scented candles'),
                       ),
                     ]),
                   )
                 ],
-            body: Container()),
+            body: const TabBarView(children: [
+              MPCategoryTab(),
+              MPCategoryTab(),
+              MPCategoryTab(),
+              MPCategoryTab(),
+            ])),
       ),
+    );
+  }
+}
+
+class MPCategoryTab extends StatelessWidget {
+  const MPCategoryTab({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              //brand and top 3 product;
+              const MPBrandShowcase(
+                images: [
+                  'assets/images/products/perfume/chanel_product_1.png',
+                  'assets/images/products/perfume/chanel_product_2.png',
+                  'assets/images/products/perfume/chanel_product_3.png'
+                ],
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              MPSectionHeading(
+                title: 'You might like',
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              //product
+              MPGridLayout(
+                  itemCount: 8,
+                  itemBuilder: (_, index) => const MPProductCart()),
+              const SizedBox(
+                height: 16.0,
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

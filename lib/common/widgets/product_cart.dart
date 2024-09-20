@@ -28,13 +28,14 @@ class MPProductCart extends StatelessWidget {
           children: [
             //view,heart
             MPRoundedContainer(
-              height: 180,
+              //height: 180,
               backgroundColor: Colors.black12,
               child: Stack(
                 children: [
                   const MPRoundImage(
                     image: 'assets/images/products/body_mist_product.jpg',
                     applyImageRadius: true,
+                    radius: 16,
                   ),
                   //sale
                   Positioned(

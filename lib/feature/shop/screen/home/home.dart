@@ -12,6 +12,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/widgets/grid_layout.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -131,27 +133,15 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 32.0,
                   ),
-                   MPSectionHeading(
+                  MPSectionHeading(
                     title: 'Popular Categories',
                     textColor: Colors.black,
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
                   const SizedBox(
                     height: 16.0,
                   ),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemCount: 8,
-                    gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12.0,
-                        mainAxisSpacing: 12.0,
-                      mainAxisExtent: 300
-                    ),
-                    itemBuilder: (context, index) => const MPProductCart(),
-                  )
+                   MPGridLayout(itemCount: 8, itemBuilder: (_,index)=> const MPProductCart())
                 ],
               ),
             ),
@@ -161,3 +151,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+

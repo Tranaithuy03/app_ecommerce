@@ -32,6 +32,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/verify/
     - assets/images/products/
+    - assets/images/products/perfume/
   fonts:
     - family: Poppins
       fonts:
