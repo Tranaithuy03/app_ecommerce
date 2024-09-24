@@ -33,6 +33,8 @@ flutter:
     - assets/images/verify/
     - assets/images/products/
     - assets/images/products/perfume/
+    - assets/images/user/
+    - assets/images/products/macaland/
   fonts:
     - family: Poppins
       fonts:

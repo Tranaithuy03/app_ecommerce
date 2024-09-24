@@ -23,7 +23,7 @@ class MPCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: isShowBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Iconsax.arrow_left))
+                icon: const Icon(Iconsax.arrow_left_copy))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

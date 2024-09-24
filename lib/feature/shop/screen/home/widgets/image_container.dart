@@ -12,7 +12,7 @@ class MPRoundImage extends StatelessWidget {
     this.width,
     this.height,
     this.onPressed,
-    this.radius=100,
+    this.radius=100, this.border,
   });
 
   final bool isNetworkImage;
@@ -25,6 +25,7 @@ class MPRoundImage extends StatelessWidget {
   final double? width, height;
   final VoidCallback? onPressed;
   final double radius;
+  final Border? border;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,6 +36,7 @@ class MPRoundImage extends StatelessWidget {
           padding: padding,
           decoration: BoxDecoration(
               color: backgroundColor,
+              border: border,
               borderRadius: BorderRadius.circular(radius)),
           child: ClipRRect(
               borderRadius: applyImageRadius?BorderRadius.circular(radius): BorderRadius.zero,

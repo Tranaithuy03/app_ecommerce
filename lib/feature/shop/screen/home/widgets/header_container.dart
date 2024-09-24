@@ -16,8 +16,8 @@ class MPPrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: Colors.blueAccent,
         padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
+        child: Container(
+          //height: 400,
           child: Stack(
             children: [
               const Positioned(

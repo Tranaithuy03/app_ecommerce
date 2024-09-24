@@ -1,5 +1,7 @@
+import 'package:app_my_pham/feature/personalization/screens/settings/setting.dart';
 import 'package:app_my_pham/feature/shop/screen/home/home.dart';
 import 'package:app_my_pham/feature/shop/screen/store/store.dart';
+import 'package:app_my_pham/feature/shop/screen/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -36,11 +38,7 @@ class NavigationController extends GetxController {
   final pages = [
     const HomeScreen(),
     const StoreScreen(),
-    Container(
-      color: Colors.orange,
-    ),
-    Container(
-      color: Colors.red,
-    )
+    const WishlistScreen(),
+    const SettingScreen()
   ];
 }

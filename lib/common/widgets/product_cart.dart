@@ -1,7 +1,9 @@
 import 'package:app_my_pham/common/enum.dart';
 import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
+import 'package:app_my_pham/feature/shop/screen/product_details/product_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'brand_title_verify.dart';
@@ -13,7 +15,7 @@ class MPProductCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: ()=> Get.to(()=> const ProductDetail()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
