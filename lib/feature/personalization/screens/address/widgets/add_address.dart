@@ -36,7 +36,7 @@ class MPAddMyAddress extends StatelessWidget {
                 const SizedBox(height: 16,),
                 TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global_copy), labelText: 'Country'),),
                 const SizedBox(height: 24.0,),
-                SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){}, child: Text('Save')),)
+                SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){}, child: const Text('Save')),)
               ],
             ),
           ),
