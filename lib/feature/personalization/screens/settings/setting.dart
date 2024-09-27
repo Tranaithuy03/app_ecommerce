@@ -1,3 +1,4 @@
+import 'package:app_my_pham/feature/personalization/screens/address/address.dart';
 import 'package:app_my_pham/feature/personalization/screens/profile/profile.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/header_container.dart';
@@ -64,10 +65,11 @@ class SettingScreen extends StatelessWidget {
                     title: 'Account settings',
                     showActionButton: false,
                   ),
-                  const MPSettingsMenuTile(
+                   MPSettingsMenuTile(
                     icon: Iconsax.safe_home_copy,
                     title: 'My Addresses',
                     subtitle: 'Set shopping delivey address',
+                    onTap:()=> Get.to(()=> const UserAddressScreen()),
                   ),
                   const MPSettingsMenuTile(
                     icon: Iconsax.shopping_cart_copy,
@@ -106,7 +108,7 @@ class SettingScreen extends StatelessWidget {
                     title: 'App Settings',
                     showActionButton: false,
                   ),
-                  MPSettingsMenuTile(
+                  const MPSettingsMenuTile(
                     icon: Iconsax.document_upload_copy,
                     title: 'Load Data',
                     subtitle: 'Upload Data to your Cloud Firebase',
@@ -154,16 +156,17 @@ class MPSettingsMenuTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle,
-    this.trailing,
+    this.trailing, this.onTap,
   });
 
   final IconData icon;
   final String title, subtitle;
   final Widget? trailing;
-
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: Icon(
         icon,
         size: 28,

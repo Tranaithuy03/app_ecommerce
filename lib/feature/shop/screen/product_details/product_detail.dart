@@ -5,7 +5,9 @@ import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dar
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/curved_edget.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_data.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_to_cart.dart';
+import 'package:app_my_pham/feature/shop/screen/product_reviews/product_review.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 
@@ -213,7 +215,7 @@ class ProductDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const MPSectionHeading(title: 'Reviews(196)',showActionButton: false,),
-                      IconButton(onPressed: (){}, icon: const Icon(Iconsax.arrow_right_3_copy))
+                      IconButton(onPressed: ()=> Get.to(()=>const ProductReviewScreen()), icon: const Icon(Iconsax.arrow_right_3_copy))
                     ],
                   ),
                   
