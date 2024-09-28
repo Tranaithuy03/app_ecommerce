@@ -30,13 +30,12 @@ class MPIcon extends StatelessWidget {
                 : Colors.white.withOpacity(0.9)),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            icon,
-            color: color,
-            size: size,
-          )),
+      child: Center(
+        child: Icon(
+              icon,
+              color: color,
+              size: size,
+            )),
     );
   }
 }

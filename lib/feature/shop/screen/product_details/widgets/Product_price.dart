@@ -22,7 +22,7 @@ class MPProducPriceText extends StatelessWidget {
       style: isLarge
           ? Theme.of(context).textTheme.headlineMedium!.apply(
           decoration: isLineThrough ? TextDecoration.lineThrough : null)
-          : Theme.of(context).textTheme.titleSmall!.apply(
+          : Theme.of(context).textTheme.titleLarge!.apply(
           decoration: isLineThrough ? TextDecoration.lineThrough : null),
     );
   }

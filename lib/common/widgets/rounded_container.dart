@@ -11,7 +11,7 @@ class MPRoundedContainer extends StatelessWidget {
     this.backgroundColor=Colors.white10,
     this.child,
     this.showBorder= false,
-    this.borderColor =Colors.white38
+    this.borderColor =Colors.grey
   });
 
   final double? width, height;

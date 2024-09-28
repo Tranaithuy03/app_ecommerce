@@ -12,12 +12,10 @@ class MPTextFormFieldTheme{
     floatingLabelStyle: const TextStyle().copyWith(color: Colors.black.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(width: 1,color: Colors.grey)
-    ),
+        borderSide: const BorderSide(width: 1,color: Colors.grey)    ),
     enabledBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(width: 1,color: Colors.grey)
-    ),
+        borderSide: const BorderSide(width: 1,color: Colors.grey)    ),
     focusedBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(14),
         borderSide: const BorderSide(width: 1,color: Colors.black12)
@@ -41,11 +39,11 @@ class MPTextFormFieldTheme{
     floatingLabelStyle: const TextStyle().copyWith(color: Colors.white.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(width: 1,color: Colors.grey)
+      borderSide: BorderSide(width: 1,color: Colors.grey.withOpacity(0.5))
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(width: 1,color: Colors.grey)
+        borderSide: BorderSide(width: 1,color: Colors.grey.withOpacity(0.5))
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(14),

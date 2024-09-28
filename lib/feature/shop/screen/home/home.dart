@@ -1,6 +1,7 @@
 import 'package:app_my_pham/common/widgets/product_cart.dart';
 import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_dot.dart';
 import 'package:app_my_pham/feature/shop/controller/banner_home_controller.dart';
+import 'package:app_my_pham/feature/shop/screen/cart/cart.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/category_container.dart';
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                     actions: [
                       MPCartCounterIcon(
                         number: '10',
-                        onPressed: () {},
+                        onPressed: ()=> Get.to(()=> const CartScreen()),
                         colorIcon: Colors.white,
                       )
                     ],
