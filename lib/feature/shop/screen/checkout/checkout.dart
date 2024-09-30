@@ -3,11 +3,8 @@ import 'package:app_my_pham/feature/shop/screen/cart/cart.dart';
 import 'package:app_my_pham/feature/shop/screen/checkout/success.dart';
 import 'package:app_my_pham/feature/shop/screen/checkout/widgets/coupon.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../home/widgets/appbar.dart';
 
 class CheckoutScreen extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:app_my_pham/common/widgets/product_cart.dart';
 import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_dot.dart';
 import 'package:app_my_pham/feature/shop/controller/banner_home_controller.dart';
+import 'package:app_my_pham/feature/shop/screen/all_product/all_product.dart';
 import 'package:app_my_pham/feature/shop/screen/cart/cart.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
@@ -9,6 +10,7 @@ import 'package:app_my_pham/feature/shop/screen/home/widgets/header_container.da
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
+import 'package:app_my_pham/feature/shop/screen/sub_category/sub_category.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,26 +70,28 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const MPSectionHeading(
+                         MPSectionHeading(
                           title: 'Popular Categories',
                           textColor: Colors.white,
-                          showActionButton: false,
+                          showActionButton: true,
+                          onPressed: () => Get.to(()=> const AllProductsScreen()),
                         ),
                         const SizedBox(
                           height: 16.0,
                         ),
                         //categories
                         SizedBox(
-                          height: 80,
+                          height: 100,
                           child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: 10,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (_, index) {
-                                return const MPVerticalImageText(
+                                return MPVerticalImageText(
                                   title: 'Body mist',
                                   image:
                                       'assets/icons/categories/body_mist.png',
+                                  onTap: ()=> Get.to(()=> const SubCategoryScreen()),
                                 );
                               }),
                         )

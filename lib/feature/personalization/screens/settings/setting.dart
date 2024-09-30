@@ -4,6 +4,7 @@ import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/header_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
+import 'package:app_my_pham/feature/shop/screen/order/order.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -76,10 +77,11 @@ class SettingScreen extends StatelessWidget {
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout',
                   ),
-                  const MPSettingsMenuTile(
+                   MPSettingsMenuTile(
                     icon: Iconsax.bag_tick_copy,
                     title: 'My Orders',
                     subtitle: 'In-progress and Complete Orders',
+                    onTap: () => Get.to(()=> const MyOrderScreen()),
                   ),
                   const MPSettingsMenuTile(
                     icon: Iconsax.bank_copy,
