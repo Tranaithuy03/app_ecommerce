@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../login/login.dart';
 class VerifyDoneScreen extends StatelessWidget {
-  const VerifyDoneScreen({super.key});
-
+  const VerifyDoneScreen({super.key, this.onPressed});
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class VerifyDoneScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(()=> const LoginScreen()),
+                  onPressed: onPressed,
                   child: const Text(
                     'Continue',
                   )),

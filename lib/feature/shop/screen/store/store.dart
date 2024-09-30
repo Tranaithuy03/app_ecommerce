@@ -5,9 +5,11 @@ import 'package:app_my_pham/common/widgets/tabbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
+import 'package:app_my_pham/feature/shop/screen/store/brands/all_brands.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/brand_card.dart';
 import '../../../../common/widgets/brand_show.dart';
@@ -57,11 +59,12 @@ class StoreScreen extends StatelessWidget {
                           const SizedBox(
                             height: 24.0,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
+                           Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: MPSectionHeading(
                               title: 'Featured Brands',
                               showActionButton: true,
+                              onPressed: ()=> Get.to(()=> const AllBrandsScreen()),
                             ),
                           ),
                           MPGridLayout(

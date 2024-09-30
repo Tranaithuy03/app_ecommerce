@@ -9,7 +9,7 @@ class MPBrandCard extends StatelessWidget {
     this.onTap,
     required this.image,
     required this.title,
-    required this.subtitle,  this.showBorder=true,
+    this.subtitle='',  this.showBorder=true,
   });
 
   final VoidCallback? onTap;
@@ -20,7 +20,7 @@ class MPBrandCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: MPRoundedContainer(
         //radius: 16.0,
         backgroundColor: Colors.transparent,

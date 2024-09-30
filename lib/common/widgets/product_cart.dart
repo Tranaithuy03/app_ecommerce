@@ -1,4 +1,3 @@
-import 'package:app_my_pham/common/enum.dart';
 import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/product_detail.dart';
