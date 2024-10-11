@@ -165,7 +165,6 @@ class MPFormSignUp extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                //onPressed: ()=>Get.to(()=> const VerifyEmailScreen()),
                   onPressed: () => controller.signup(),
                   child: const Text(
                     'Create Account',

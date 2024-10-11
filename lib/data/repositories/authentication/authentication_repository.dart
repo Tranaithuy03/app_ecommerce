@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get
@@ -81,7 +82,9 @@ class AuthenticationRepository extends GetxController {
   ///logout
   Future<void> logout() async {
     try{
+      await GoogleSignIn().signOut();
       await _auth.signOut();
+      Get.offAll(()=> const LoginScreen());
     }on FirebaseAuthException catch (e) {
       throw MPFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -92,6 +95,45 @@ class AuthenticationRepository extends GetxController {
       throw MPPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
+    }
+  }
+  Future<UserCredential> loginWithEmailAndPassword( String email, String password) async{
+    try {
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw MPFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const MPFormatException();
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+  ///sign in with google
+  Future<UserCredential> signInWithGoogle() async{
+    try {
+      final GoogleSignInAccount? account = await GoogleSignIn().signIn();//kích hoạt luồng đăng nhập, trả về thông tin tài khoản người dùng đăng nhập
+      final GoogleSignInAuthentication? googleAuth = await account?.authentication;///lấy thông tin xác thực
+      final credentials = GoogleAuthProvider.credential(///tạo thông tin để dùng với firebase
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken
+      );
+      ///đaăng nhập với firebase thông qua thông tin xác thực
+      return await _auth.signInWithCredential(credentials);
+
+    } on FirebaseAuthException catch (e) {
+      throw MPFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const MPFormatException();
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
     }
   }
 }

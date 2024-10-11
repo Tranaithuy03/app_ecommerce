@@ -1,3 +1,4 @@
+import 'package:app_my_pham/data/repositories/authentication/authentication_repository.dart';
 import 'package:app_my_pham/feature/personalization/screens/address/address.dart';
 import 'package:app_my_pham/feature/personalization/screens/profile/profile.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
@@ -143,6 +144,15 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(height: 24,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(onPressed: ()=> AuthenticationRepository.instance.logout(),
+                    child: const Text('Log Out')),
               ),
             )
           ],

@@ -26,7 +26,7 @@ class SignUpController extends GetxController {
     try {
       MPFullScreenLoader.openLoadingDialog(
           'We are processing your information...',
-          'assets/animations/animation_wait.json');
+          'assets/animations/Animation_save_info.json');
       //kiểm tra kết nối internet
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -37,6 +37,9 @@ class SignUpController extends GetxController {
       if (!signupFormKey.currentState!.validate()) {
         MPFullScreenLoader.stopLoading();
         return;
+      }
+      if(!privacyPolicy.value){
+        MPLoaders.warningSnackBar(title: 'Accept privacy policy',message: 'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use');
       }
       final user = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(

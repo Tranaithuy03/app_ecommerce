@@ -1,9 +1,12 @@
+import 'package:app_my_pham/feature/authentication/controller/login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DividerFooter extends StatelessWidget {
   const DividerFooter({super.key});
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Column(
     children: [
       Row(
@@ -24,7 +27,7 @@ class DividerFooter extends StatelessWidget {
             border: Border.all(color: Colors.black26),
           ),
           child: IconButton(
-            onPressed: (){},
+            onPressed: ()=> controller.googleSignIn(),
             icon: Image.asset('assets/logos/logo_google.jpg', width: 14.0,height: 14.0,),
           ),
         ),
