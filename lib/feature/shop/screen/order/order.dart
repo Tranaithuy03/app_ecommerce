@@ -1,10 +1,6 @@
-import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/order/widgets/order_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class MyOrderScreen extends StatelessWidget {
   const MyOrderScreen({super.key});

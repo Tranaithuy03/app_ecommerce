@@ -1,15 +1,21 @@
+import 'package:app_my_pham/feature/personalization/screens/profile/widgets/change_name.dart';
+import 'package:app_my_pham/feature/personalization/screens/profile/widgets/re_auth_user.dart';
+import 'package:app_my_pham/feature/personalization/screens/settings/setting.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
+import '../../controller/user_controller.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return  Scaffold(
       appBar: const MPCustomAppBar(
         isShowBackArrow: true,
@@ -24,8 +30,14 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const MPRoundImage(image: 'assets/images/user/user.png',width: 80,height: 80,),
-                    TextButton(onPressed:(){}, child: const Text('Change Profile Photo'))
+                    Obx((){
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty? networkImage: 'assets/images/user/user.png';
+                      return controller.imageLoading.value?
+                      const MPShimmerEffect(width: 80, height: 80)
+                          :MPRoundImage(image: image,width: 80,height: 80,isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed:()=>controller.uploadUserProfilePicture(), child: const Text('Change Profile Photo'))
                   ],
                 ),
               ),
@@ -35,8 +47,8 @@ class ProfileScreen extends StatelessWidget {
               //profile infor
               const MPSectionHeading(title: 'Profile Information',showActionButton: false,),
               const SizedBox(height: 24.0,),
-              MPProfileMenu(onPressed: () {  }, title: 'Name', value: 'AT tryhard',),
-              MPProfileMenu(onPressed: () {  }, title: 'Username', value: 'TAT',),
+              MPProfileMenu(onPressed: ()=> Get.to(()=>const MPChangeName()), title: 'Name', value: controller.user.value.fullName,),
+              MPProfileMenu(onPressed: () {  }, title: 'Username', value: controller.user.value.username,),
 
               const SizedBox(height: 12.0,),
               const Divider(),
@@ -44,16 +56,16 @@ class ProfileScreen extends StatelessWidget {
               //personal
               const MPSectionHeading(title: 'Personal Information',showActionButton: false,),
               const SizedBox(height: 24.0,),
-              MPProfileMenu(onPressed: () {  }, title: 'User ID', value: '1554',icon: Iconsax.copy_copy,),
-              MPProfileMenu(onPressed: () {  }, title: 'E-mail', value: 'tata@gmail.com',),
-              MPProfileMenu(onPressed: () {  }, title: 'Phone Number', value: '000011111',),
+              MPProfileMenu(onPressed: () {  }, title:'ID' , value: controller.user.value.id,icon: Iconsax.copy_copy,),
+              MPProfileMenu(onPressed: () {  }, title:'Email' , value: controller.user.value.email,),
+              MPProfileMenu(onPressed: () {  }, title: 'Phone Number', value: controller.user.value.phoneNumber,),
               MPProfileMenu(onPressed: () {  }, title: 'Gender', value: 'Female',),
               MPProfileMenu(onPressed: () {  }, title: 'Date of Birth', value: '20/5/2000',),
 
               const SizedBox(height: 8.0,),
               const Divider(),
               const SizedBox(height: 24.0,),
-              Center(child: TextButton(onPressed: (){}, child: const Text('Close Account',style: TextStyle(color: Colors.red),)))
+              Center(child: TextButton(onPressed: ()=> controller.deleteAccountWarningPopup(), child: const Text('Close Account',style: TextStyle(color: Colors.red),)))
             ],
           ),
         ),

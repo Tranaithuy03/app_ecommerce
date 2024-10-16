@@ -1,14 +1,11 @@
 import 'package:app_my_pham/common/widgets/grid_layout.dart';
 import 'package:app_my_pham/common/widgets/product_cart.dart';
-import 'package:app_my_pham/common/widgets/rounded_container.dart';
 import 'package:app_my_pham/common/widgets/tabbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
 import 'package:app_my_pham/feature/shop/screen/store/brands/all_brands.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/brand_card.dart';

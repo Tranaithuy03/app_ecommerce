@@ -30,7 +30,7 @@ class VerifyEmailController extends GetxController {
     Timer.periodic(const Duration(seconds: 1), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
-      if (user!.emailVerified ?? false) {
+      if (user!.emailVerified) {
         timer.cancel();
         Get.off(() => VerifyDoneScreen(//xóa màn hình verify ra khỏi stack, chuyển hướng sang done
               onPressed: () =>

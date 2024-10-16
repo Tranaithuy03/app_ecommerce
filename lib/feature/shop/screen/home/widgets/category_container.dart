@@ -1,14 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 class MPVerticalImageText extends StatelessWidget {
   const MPVerticalImageText({
     super.key,
+    this.isNetworkImage = false,
     required this.image,
     required this.title,
     this.textColor = Colors.white,
     this.backgroundColor = Colors.white,
     this.onTap,
   });
-
+  final bool isNetworkImage;
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
@@ -30,8 +32,12 @@ class MPVerticalImageText extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: backgroundColor,
                     borderRadius: BorderRadius.circular(100)),
-                child: Image.asset(image, fit: BoxFit.cover,color: Colors.black,)
-            ),
+                child: Center(
+                      child: Image(
+                        image: isNetworkImage? NetworkImage(image) : AssetImage(image) as ImageProvider,
+                        fit: BoxFit.cover,
+                      )),
+                ),
             SizedBox(
               width: 55,
               child: Text(

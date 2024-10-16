@@ -1,3 +1,4 @@
+import 'package:app_my_pham/data/repositories/user/user_repository.dart';
 import 'package:app_my_pham/feature/authentication/screens/login/login.dart';
 import 'package:app_my_pham/feature/authentication/screens/onboarding/onboarding.dart';
 import 'package:app_my_pham/feature/authentication/screens/sign_up/verify_email.dart';
@@ -19,7 +20,7 @@ class AuthenticationRepository extends GetxController {
   //variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-
+  User? get authUser => _auth.currentUser;
   @override
   void onReady() {
     //chỉ chạy 1 lần khi widget đã hiển thị xong( đã build v render, gọi khi controller và các tp khác đã sẵn sàng
@@ -55,7 +56,7 @@ class AuthenticationRepository extends GetxController {
       throw MPFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw MPFirebaseException(e.code).message;
-    } on FormatException catch (e) {
+    } on FormatException catch(e){
       throw const MPFormatException();
     } on PlatformException catch (e) {
       throw MPPlatformException(e.code).message;
@@ -124,6 +125,56 @@ class AuthenticationRepository extends GetxController {
       ///đaăng nhập với firebase thông qua thông tin xác thực
       return await _auth.signInWithCredential(credentials);
 
+    } on FirebaseAuthException catch (e) {
+      throw MPFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const MPFormatException();
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+
+  ///reset pass
+  Future<void> sendPasswordResetEmail( String email) async{
+    try {
+       await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw MPFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const MPFormatException();
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+  ///delete account
+  Future<void> deleteAccount()async{
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw MPFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const MPFormatException();
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+  Future<void>reAuthenticateEmailAndPassword(String email, String password)async{
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);//thông tin xác thực
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw MPFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

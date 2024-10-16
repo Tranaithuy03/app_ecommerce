@@ -8,8 +8,6 @@ import 'package:app_my_pham/utils/popups/full_screen_loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../shop/screen/home/home.dart';
-
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();

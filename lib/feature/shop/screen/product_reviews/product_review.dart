@@ -1,11 +1,8 @@
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/product_reviews/widgets/product_ratings.dart';
 import 'package:app_my_pham/feature/shop/screen/product_reviews/widgets/user_reviews.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 class ProductReviewScreen extends StatelessWidget {
   const ProductReviewScreen({super.key});
 

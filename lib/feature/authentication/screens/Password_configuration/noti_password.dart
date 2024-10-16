@@ -1,10 +1,11 @@
+import 'package:app_my_pham/feature/authentication/controller/forget_password/forget_password_controller.dart';
 import 'package:app_my_pham/feature/authentication/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class NotiPasswordScreen extends StatelessWidget {
-  const NotiPasswordScreen({super.key});
-
+  const NotiPasswordScreen({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +55,7 @@ class NotiPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: ()=> Get.back(),
+                    onPressed: ()=> ForgetPasswordController.instance.resendPasswordResetEmail(email),
                     child: const Text(
                       'Resend email',
                     )),

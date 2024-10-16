@@ -1,12 +1,9 @@
 import 'package:app_my_pham/feature/authentication/controller/login/login_controller.dart';
 import 'package:app_my_pham/feature/authentication/screens/Password_configuration/forgot_password.dart';
 import 'package:app_my_pham/feature/authentication/screens/sign_up/signup.dart';
-import 'package:app_my_pham/navigation_container.dart';
 import 'package:app_my_pham/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class LoginForm extends StatelessWidget {

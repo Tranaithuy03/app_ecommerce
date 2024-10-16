@@ -2,12 +2,11 @@ import 'package:app_my_pham/common/widgets/product_cart.dart';
 import 'package:app_my_pham/feature/authentication/screens/onboarding/widgets/onboarding_dot.dart';
 import 'package:app_my_pham/feature/shop/controller/banner_home_controller.dart';
 import 'package:app_my_pham/feature/shop/screen/all_product/all_product.dart';
-import 'package:app_my_pham/feature/shop/screen/cart/cart.dart';
-import 'package:app_my_pham/feature/shop/screen/home/widgets/action_container.dart';
-import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/category_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/header_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/home_appbar.dart';
+import 'package:app_my_pham/feature/shop/screen/home/widgets/home_categories.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
 import 'package:app_my_pham/feature/shop/screen/sub_category/sub_category.dart';
@@ -30,34 +29,7 @@ class HomeScreen extends StatelessWidget {
             MPPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  MPCustomAppBar(
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Have a good day!',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(color: Colors.white),
-                        ),
-                        Text(
-                          'Ms.Thuy',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .apply(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    actions: [
-                      MPCartCounterIcon(
-                        number: '10',
-                        onPressed: ()=> Get.to(()=> const CartScreen()),
-                        colorIcon: Colors.white,
-                      )
-                    ],
-                  ),
+                  const HomeAppBar(),
                   const SizedBox(
                     height: 32,
                   ),
@@ -80,21 +52,7 @@ class HomeScreen extends StatelessWidget {
                           height: 16.0,
                         ),
                         //categories
-                        SizedBox(
-                          height: 100,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: 10,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (_, index) {
-                                return MPVerticalImageText(
-                                  title: 'Body mist',
-                                  image:
-                                      'assets/icons/categories/body_mist.png',
-                                  onTap: ()=> Get.to(()=> const SubCategoryScreen()),
-                                );
-                              }),
-                        )
+                        MPHomeCategories()
                       ],
                     ),
                   )
@@ -156,4 +114,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
 

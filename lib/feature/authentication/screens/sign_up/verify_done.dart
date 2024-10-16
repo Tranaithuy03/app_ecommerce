@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../login/login.dart';
 class VerifyDoneScreen extends StatelessWidget {
   const VerifyDoneScreen({super.key, this.onPressed});
   final VoidCallback? onPressed;

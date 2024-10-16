@@ -1,4 +1,6 @@
-import 'package:app_my_pham/feature/authentication/screens/Password_configuration/Noti_password.dart';
+import 'package:app_my_pham/feature/authentication/controller/forget_password/forget_password_controller.dart';
+import 'package:app_my_pham/feature/authentication/screens/Password_configuration/noti_password.dart';
+import 'package:app_my_pham/utils/validators/validation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,7 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,17 +34,22 @@ class ForgotPasswordScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 50.0,),
-            TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.direct_right_copy),
-                labelText: 'Email',
+            Form(
+              key: controller.forgetFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: MPValidator.validateEmail,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Iconsax.direct_right_copy),
+                  labelText: 'Email',
+                ),
               ),
             ),
             const SizedBox(height: 32.0,),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(()=> const NotiPasswordScreen()),
+                  onPressed: () => controller.sendPasswordResetEmail(),
                   child: const Text(
                     'Submit',
                   )),
