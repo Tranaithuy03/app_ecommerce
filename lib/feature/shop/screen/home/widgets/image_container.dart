@@ -52,7 +52,7 @@ class MPRoundImage extends StatelessWidget {
                   fit: fit,
                   imageUrl: image,
                   progressIndicatorBuilder: (context, url,
-                      progress) => const MPShimmerEffect(width: 80, height: 80),
+                      progress) => MPShimmerEffect(width: width ?? double.infinity, height: height ??80),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ) :
                 Image(

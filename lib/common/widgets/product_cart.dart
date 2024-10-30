@@ -1,6 +1,10 @@
+import 'package:app_my_pham/common/enum.dart';
 import 'package:app_my_pham/common/widgets/rounded_container.dart';
+import 'package:app_my_pham/feature/shop/controller/product/product_controller.dart';
+import 'package:app_my_pham/feature/shop/models/product_model.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/product_detail.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -9,12 +13,14 @@ import 'brand_title_verify.dart';
 import 'icon_container.dart';
 
 class MPProductCart extends StatelessWidget {
-  const MPProductCart({super.key});
-
+  const MPProductCart({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return GestureDetector(
-      onTap: ()=> Get.to(()=> const ProductDetail()),
+      onTap: ()=> Get.to(()=> ProductDetail(product: product,)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -33,8 +39,9 @@ class MPProductCart extends StatelessWidget {
               backgroundColor: Colors.black12,
               child: Stack(
                 children: [
-                  const MPRoundImage(
-                    image: 'assets/images/products/body_mist_product.jpg',
+                   MPRoundImage(
+                    image: product.thumbnail,
+                    isNetworkImage: true,
                     applyImageRadius: true,
                     radius: 16,
                   ),
@@ -51,7 +58,7 @@ class MPProductCart extends StatelessWidget {
                       ),
                       child: Center(
                           child: Text(
-                        '30%',
+                        '$salePercentage%',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -77,7 +84,7 @@ class MPProductCart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Body mist Macaland chính hãng, giữ mùi thơm lâu',
+                    product.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelLarge,
@@ -86,7 +93,7 @@ class MPProductCart extends StatelessWidget {
                   const SizedBox(
                     height: 4.0,
                   ),
-                  const MPBrandTitleVerify(title: 'Macaland',),
+                   MPBrandTitleVerify(title: product.brand!.name,),
 
                 ],
               ),
@@ -96,11 +103,26 @@ class MPProductCart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    '100.000đ',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                Flexible(
+                  child: Column(
+                    children: [
+                      if(product.productType==ProductType.single.toString()&&product.salePrice>0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            product.price.toString(),
+                            style: Theme.of(context).textTheme.headlineMedium!.apply(decoration: TextDecoration.lineThrough)
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          controller.getProductPrice(product),
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(

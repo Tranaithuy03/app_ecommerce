@@ -1,5 +1,6 @@
 import 'package:app_my_pham/common/widgets/grid_layout.dart';
 import 'package:app_my_pham/common/widgets/product_cart.dart';
+import 'package:app_my_pham/feature/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -46,7 +47,7 @@ class MPSortableProduct extends StatelessWidget {
             onChanged: (value){}
         ),
         const SizedBox(height: 32,),
-        MPGridLayout(itemCount: 10, itemBuilder: (p0, p1) => const MPProductCart())
+        MPGridLayout(itemCount: 10, itemBuilder: (p0, p1) => MPProductCart(product: ProductModel.empty(),))
       ],
     );
   }

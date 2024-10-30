@@ -16,7 +16,7 @@ class MPProducPriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '$priceđ',
+      price,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
       style: isLarge

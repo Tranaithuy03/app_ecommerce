@@ -1,6 +1,7 @@
 import 'package:app_my_pham/common/widgets/grid_layout.dart';
 import 'package:app_my_pham/common/widgets/icon_container.dart';
 import 'package:app_my_pham/common/widgets/product_cart.dart';
+import 'package:app_my_pham/feature/shop/models/product_model.dart';
 import 'package:app_my_pham/feature/shop/screen/home/home.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class WishlistScreen extends StatelessWidget {
             children: [
               MPGridLayout(
                   itemCount: 10,
-                  itemBuilder: (_, index) => const MPProductCart())
+                  itemBuilder: (_, index) =>  MPProductCart(product: ProductModel.empty(),))
             ],
           ),
         ),

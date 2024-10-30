@@ -1,5 +1,6 @@
 import 'package:app_my_pham/bindings/general_binding.dart';
 import 'package:app_my_pham/feature/authentication/screens/onboarding/onboarding.dart';
+import 'package:app_my_pham/routes/app_routes.dart';
 import 'package:app_my_pham/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       darkTheme: MPAppTheme.darkTheme,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
+      getPages: AppRoute.pages,
       home: const OnboardingScreen(),
     );
   }
