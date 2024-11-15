@@ -13,8 +13,34 @@ class ProductRepository extends GetxController{
   ///get limited featured products
   Future<List<ProductModel>> getFeaturedProducts()async{
     try{
+      final snapshot =await  _db.collection('Products').where('IsFeatured',isEqualTo: true).limit(4).get();
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+  Future<List<ProductModel>> getAllFeaturedProducts()async{
+    try{
       final snapshot =await  _db.collection('Products').where('IsFeatured',isEqualTo: true).get();
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw MPFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw MPPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong';
+    }
+  }
+
+  Future<List<ProductModel>> fetchProductsByQuery(Query query)async{
+    try{
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList = querySnapshot.docs.map((e) => ProductModel.fromQuerySnapshot(e)).toList();
+      return productList;
     } on FirebaseException catch (e) {
       throw MPFirebaseException(e.code).message;
     } on PlatformException catch (e) {

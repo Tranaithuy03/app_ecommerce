@@ -30,6 +30,15 @@ class ProductController extends GetxController {
       isLoading.value = false;
     }
   }
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      final products = await productRepo.getAllFeaturedProducts();
+      return products;
+    } catch (e) {
+      MPLoaders.errorSnackBar(title: 'Oh snap', message: e.toString());
+      return [];
+    }
+  }
 
   ///hàm lấy giá tiền nhỏ nhất và cao nhất trong các biến thể để hiển thị, ví dụ như trong shopee có hiển thị giá sản phẩm như 1000- 39999
   String getProductPrice(ProductModel product) {

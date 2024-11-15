@@ -31,7 +31,7 @@ class BrandProductsScreen extends StatelessWidget {
               SizedBox(
                 height: 24,
               ),
-              MPSortableProduct()
+              MPSortableProduct(products: [],)
             ],
           ),
         ),

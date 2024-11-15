@@ -2,22 +2,27 @@ import 'package:app_my_pham/common/enum.dart';
 import 'package:app_my_pham/common/widgets/icon_container.dart';
 import 'package:app_my_pham/feature/shop/controller/product/variation_controller.dart';
 import 'package:app_my_pham/feature/shop/models/product_model.dart';
+import 'package:app_my_pham/feature/shop/screen/checkout/checkout.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/heading_section.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/image_container.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/curved_edget.dart';
+import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_atrributes.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_data.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_image_slider.dart';
 import 'package:app_my_pham/feature/shop/screen/product_details/widgets/product_to_cart.dart';
 import 'package:app_my_pham/feature/shop/screen/product_reviews/product_review.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({super.key, required this.product});
+
   final ProductModel product;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +31,9 @@ class ProductDetail extends StatelessWidget {
         child: Column(
           children: [
             //slider
-            MPProductImageSlider(product: product,),
+            MPProductImageSlider(
+              product: product,
+            ),
             //details
             Padding(
               padding:
@@ -34,23 +41,27 @@ class ProductDetail extends StatelessWidget {
               child: Column(
                 children: [
                   const MPProductRating(),
-                  MPProductData(product: product,),
+                  MPProductData(
+                    product: product,
+                  ),
                   const SizedBox(
                     height: 16.0,
                   ),
                   //attributes,
-                  if(product.productType==ProductType.variable.toString())
-                    MPProductAttributes(product: product,),
-                  if(product.productType==ProductType.variable.toString())
+                  if (product.productType == ProductType.variable.toString())
+                    MPProductAttributes(
+                      product: product,
+                    ),
+                  if (product.productType == ProductType.variable.toString())
                     const SizedBox(
-                    height: 16.0,
-                  ),
+                      height: 16.0,
+                    ),
                   //checkout
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       child: const Text('Checkout'),
-                      onPressed: () {},
+                      onPressed: () => Get.to(()=> const CheckoutScreen()),
                     ),
                   ),
                   const SizedBox(
@@ -64,15 +75,17 @@ class ProductDetail extends StatelessWidget {
                   const SizedBox(
                     height: 24.0,
                   ),
-                   ReadMoreText(
-                    product.description??'',
-                  trimLines: 2,
-                    trimMode:TrimMode.Line,
+                  ReadMoreText(
+                    product.description ?? '',
+                    trimLines: 2,
+                    trimMode: TrimMode.Line,
                     trimExpandedText: 'Less',
                     trimCollapsedText: 'More',
                     textAlign: TextAlign.justify,
-                    moreStyle: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w800),
-                    lessStyle: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14.0, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14.0, fontWeight: FontWeight.w800),
                   ),
                   const Divider(),
                   const SizedBox(
@@ -81,60 +94,22 @@ class ProductDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const MPSectionHeading(title: 'Reviews(196)',showActionButton: false,),
-                      IconButton(onPressed: ()=> Get.to(()=>const ProductReviewScreen()), icon: const Icon(Iconsax.arrow_right_3_copy))
+                      const MPSectionHeading(
+                        title: 'Reviews(196)',
+                        showActionButton: false,
+                      ),
+                      IconButton(
+                          onPressed: () =>
+                              Get.to(() => const ProductReviewScreen()),
+                          icon: const Icon(Iconsax.arrow_right_3_copy))
                     ],
                   ),
-                  
                 ],
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class MPProductAttributes extends StatelessWidget {
-  const MPProductAttributes({
-    super.key, required this.product,
-  });
-  final ProductModel product;
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(VariationController());
-    return Column(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: product.productAttributes!.map((attribute) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-               MPSectionHeading(
-                title: attribute.name??'',
-                showActionButton: false,
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              Wrap(
-                spacing: 16.0,
-                children: attribute.values!.map((value) => MPChoice(
-                  text: value,
-                  selected: false,
-                  onSelected: (value) {},
-                ),).toList()
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-            ],
-          ),
-          ).toList()
-        ),
-
-      ],
     );
   }
 }
@@ -158,7 +133,7 @@ class MPChoice extends StatelessWidget {
     return ChoiceChip(
       label: Text(text),
       selected: selected,
-      onSelected: (value) {},
+      onSelected: onSelected,
       elevation: 0,
       selectedColor: Colors.blueAccent,
       labelStyle: TextStyle(color: selected ? Colors.white : null),

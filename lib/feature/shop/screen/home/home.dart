@@ -8,6 +8,8 @@ import 'package:app_my_pham/feature/shop/screen/home/widgets/home_appbar.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/home_categories.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/search_container.dart';
 import 'package:app_my_pham/feature/shop/screen/home/widgets/slider_banner.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,8 +45,15 @@ class HomeScreen extends StatelessWidget {
                           title: 'Popular Categories',
                           textColor: Colors.white,
                           showActionButton: true,
-                          onPressed: () =>
-                              Get.to(() => const AllProductsScreen()),
+                          onPressed: () => Get.to(() => AllProductsScreen(
+                                title: 'Popular Products',
+                                // query: FirebaseFirestore.instance
+                                //     .collection('Products')
+                                //     .where('IsFeatured', isEqualTo: true)
+                                //     .limit(6),
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                              )
+                          ),
                         ),
                         const SizedBox(
                           height: 16.0,
@@ -73,12 +82,18 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Obx((){
-                    if(controller.isLoading.value)return const MPVerticalProductsShimmer();
-                    if(controller.featuredProducts.isEmpty)return const Center(child: Text('No data'),);
+                  Obx(() {
+                    if (controller.isLoading.value)
+                      return const MPVerticalProductsShimmer();
+                    if (controller.featuredProducts.isEmpty)
+                      return const Center(
+                        child: Text('No data'),
+                      );
                     return MPGridLayout(
                         itemCount: controller.featuredProducts.length,
-                        itemBuilder: (_, index) => MPProductCart(product: controller.featuredProducts[index],));
+                        itemBuilder: (_, index) => MPProductCart(
+                              product: controller.featuredProducts[index],
+                            ));
                   })
                 ],
               ),
@@ -89,4 +104,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
